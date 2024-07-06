@@ -1,6 +1,7 @@
 package com.company.jobAPP.company;
 
 import com.company.jobAPP.job.Job;
+import com.company.jobAPP.review.Review;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -17,8 +18,10 @@ public class Company {
     @OneToMany(mappedBy = "company")
     private List<Job> jobs; // one company has many jobs
 
-    //ever company has a list of reviews
-    //private List<Review> reviews;
+    @OneToMany(mappedBy = "company")
+    private List<Review> reviews;
+
+
 
     public Company() {}
 
@@ -52,5 +55,9 @@ public class Company {
 
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
     }
 }

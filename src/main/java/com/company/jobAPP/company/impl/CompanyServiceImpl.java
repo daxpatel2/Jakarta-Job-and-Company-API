@@ -49,4 +49,14 @@ public class CompanyServiceImpl implements CompanyService {
             throw new IllegalStateException("Company with that id doesnt not exist");
         }
     }
+
+    /**
+     *
+     * @param id id number of the company to find
+     * @return null if company does not exist
+     */
+    @Override
+    public Company getCompany(Long id) {
+        return companyRepository.findById(id).orElse(null);
+    }
 }

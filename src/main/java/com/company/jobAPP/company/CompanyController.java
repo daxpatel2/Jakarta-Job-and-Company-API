@@ -44,4 +44,13 @@ public class CompanyController {
         boolean status = companyService.deleteCompany(id);
         return status ? new ResponseEntity<>("deleted succesfully",HttpStatus.OK) : new ResponseEntity<>("Couldn't deleted company",HttpStatus.BAD_REQUEST);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<String> getCompany(@PathVariable Long id) {
+        if(companyService.getCompany(id) != null) {
+            return new ResponseEntity<>("Company found with id: "+id,HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No comapny found",HttpStatus.BAD_REQUEST);
+        }
+    }
 }
